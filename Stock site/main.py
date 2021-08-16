@@ -8,27 +8,25 @@ st.markdown('''
 # Rohan's Stock Price Potral
 Shown are the stock price data for query companies!
 ''')
-#st.write('---')
+st.write('---')
 
 st.sidebar.subheader('Query parameters')
 start_date = st.sidebar.date_input("Start date", datetime.date(2019, 1, 1))
 end_date = st.sidebar.date_input("End date", datetime.date(2021, 1, 31))
 
-# Retrieving tickers data
 choice= ['Companies','Crypto']
 tradechoice = st.sidebar.selectbox('Pick Your trade', choice)
 if(tradechoice=='Companies'):
     stock_list = pd.read_csv('nse_companies.csv')
-    stockSymbol = st.sidebar.selectbox('Pick Your Company', stock_list) # Select ticker symbol
-    stockData = yf.Ticker(stockSymbol) # Get ticker data
-    stockDf = stockData.history(period='1d', start=start_date, end=end_date) #get the historical prices for this ticker
+    stockSymbol = st.sidebar.selectbox('Pick Your Company', stock_list) 
+    stockData = yf.Ticker(stockSymbol)
+    stockDf = stockData.history(period='1d', start=start_date, end=end_date)
 elif(tradechoice=='Crypto'):
     crypto_list = pd.read_csv('r.csv')
-    cryptoSymbol = st.sidebar.selectbox('Pick Your Company', crypto_list) # Select ticker symbol
-    cryptoData = yf.Ticker(cryptoSymbol) # Get ticker data
-    cryptokDf = cryptoData.history(period='1d', start=start_date, end=end_date) #get the historical prices for this ticker
+    cryptoSymbol = st.sidebar.selectbox('Pick Your Company', crypto_list)
+    cryptoData = yf.Ticker(cryptoSymbol)
+    cryptokDf = cryptoData.history(period='1d', start=start_date, end=end_date)
 
-# Stock information
 string_logo = '<img src=%s>' % stockData.info['logo_url']
 st.markdown(string_logo, unsafe_allow_html=True)
 
