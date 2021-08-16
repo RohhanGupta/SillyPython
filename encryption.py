@@ -1,3 +1,4 @@
+#Basic encryption program to confuse people
 def encryption(list):
     for i in range(len(list)):
         a=ord(list[i])
