@@ -1,0 +1,10 @@
+Requirements
+
+install:
+streamlit 
+yfinance
+cufflinks
+
+Instruction:
+To start the server:
+streamlit run main.py
