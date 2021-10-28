@@ -1,3 +1,4 @@
+from SillyPython.ipHeaderDecoder import ip_decoder
 import discord 
 import youtube_dl
 from discord.ext import commands, tasks
@@ -84,6 +85,11 @@ async def stop(ctx):
     await ctx.send("Mujhe sahi mei rok rahe ho tum?")
     voice.stop()
 
+##################################################################################################
+# Fun commands :)
+@client.command(aliases=["ip-head", "head"])
+async def header(ctx, *, ip):
+	await ctx.send(ip_decoder(ip))
 
 ##################################################################################################
 #End line
